@@ -38,7 +38,7 @@ body, html {
 /* Header & nav */
 header {
   background: transparent; /* let blur box handle background */
-
+ text-align: center; 
   padding: 1rem;
 }
 header h1 {
@@ -48,12 +48,14 @@ header h1 {
 nav ul {
   list-style: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 nav a {
-  justify-content: center;
+
   color: #b7efffd8;
+    
   text-decoration: none;
   padding: 0.5rem;
   transition: background 0.3s ease;
