@@ -2,3 +2,5 @@
 *.mp4
 *.mov
 
+project-root/media/*.mp4
+project-root/media/*.mov
