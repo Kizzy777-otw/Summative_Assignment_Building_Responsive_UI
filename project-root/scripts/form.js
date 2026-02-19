@@ -1,36 +1,31 @@
 import { addRecord } from "./state.js";
-import { validateDescription, validateAmount, validateCategory, validateDate } from "./validators.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("record-form");
   const errorsDiv = document.getElementById("form-errors");
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", function(e) {
     e.preventDefault();
-    errorsDiv.textContent = ""; // clear old errors
+    errorsDiv.textContent = "";
 
     const desc = document.getElementById("desc").value.trim();
     const amount = document.getElementById("amount").value.trim();
     const category = document.getElementById("category").value.trim();
     const date = document.getElementById("date").value.trim();
 
-    // Run regex validations
-    const errors = [];
-    if (!validateDescription(desc)) errors.push("Invalid description.");
-    if (!validateAmount(amount)) errors.push("Invalid amount.");
-    if (!validateCategory(category)) errors.push("Invalid category.");
-    if (!validateDate(date)) errors.push("Invalid date format.");
+    // Regex checks (simple beginner style)
+    const descOk = /^\S.*\S$/.test(desc);
+    const amountOk = /^[0-9]+(\.[0-9]{1,2})?$/.test(amount);
+    const categoryOk = /^[A-Za-z ]+$/.test(category);
+    const dateOk = /^\d{4}-\d{2}-\d{2}$/.test(date);
 
-    if (errors.length > 0) {
-      errorsDiv.textContent = errors.join(" ");
+    if (!descOk || !amountOk || !categoryOk || !dateOk) {
+      errorsDiv.textContent = "Please enter valid values.";
       return;
     }
 
-    // Add record to state/localStorage
-    addRecord({ description: desc, amount, category, date });
-
-    // Reset form
+    addRecord({ description: desc, amount: amount, category: category, date: date });
     form.reset();
-    errorsDiv.textContent = "Record added successfully!";
+    errorsDiv.textContent = "Record added!";
   });
 });
