@@ -7,33 +7,44 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-  <header>
-    <h1>Student Finance Tracker</h1>
-    <nav>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="records.html">Records</a></li>
-        <li><a href="form.html">Add Record</a></li>
-        <li><a href="settings.html">Settings</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Video background -->
+  <video autoplay muted loop class="video-bg">
+    <source src="media/background2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
- <main id="main">
-  <section>
-    <h2>Dashboard</h2>
-    <p id="total-records">Total Records: 0</p>
-    <p id="total-amount">Total Amount: $0.00</p>
-    <p id="top-category">Top Category: N/A</p>
-  </section>
-</main>
-<script type="module" src="scripts/dashboard.js"></script>
+  <!-- Content wrapper with blur -->
+  <div class="content-wrapper">
+    <a href="#main" class="skip-link">Skip to content</a>
 
-  <footer>
-    <p>&copy; 2026 Student Finance Tracker</p>
-  </footer>
+    <header>
+      <h1>Student Finance Tracker</h1>
+      <nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="records.html">Records</a></li>
+          <li><a href="form.html">Add Record</a></li>
+          <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </header>
 
+    <main id="main">
+      <section>
+        <h2>Dashboard</h2>
+        <p id="total-records">Total Records: 0</p>
+        <p id="total-amount">Total Amount: $0.00</p>
+        <p id="top-category">Top Category: N/A</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Student Finance Tracker</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="scripts/dashboard.js"></script>
 </body>
 </html>
