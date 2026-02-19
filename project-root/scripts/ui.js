@@ -1,34 +1,32 @@
-// Show a message in a target element
-export function showMessage(id, text) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = text;
-}
+// Show text in an element
+export const showMsg = (id, txt) => {
+  const spot = document.getElementById(id);
+  if (spot) spot.textContent = txt;
+};
 
-// Clear content of an element
-export function clearContent(id) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = "";
-}
+// Clear element
+export const clearStuff = id => {
+  const spot = document.getElementById(id);
+  if (spot) spot.textContent = "";
+};
 
-// Format amount with currency symbol
-export function formatAmount(num, symbol) {
-  return symbol + num.toFixed(2);
-}
+// Format money
+export const cashify = (num, sign) => sign + num.toFixed(2);
 
-// Format date (YYYY-MM-DD → DD/MM/YYYY)
-export function formatDate(dateStr) {
-  const parts = dateStr.split("-");
-  return parts[2] + "/" + parts[1] + "/" + parts[0];
-}
+// Format date YYYY-MM-DD → DD/MM/YYYY
+export const dateFlip = d => {
+  const bits = d.split("-");
+  return `${bits[2]}/${bits[1]}/${bits[0]}`;
+};
 
-// Update dashboard stats
-export function updateStats(totalRecords, totalAmount, topCategory, symbol) {
-  showMessage("total-records", "Total Records: " + totalRecords);
-  showMessage("total-amount", "Total Amount: " + formatAmount(totalAmount, symbol));
-  showMessage("top-category", "Top Category: " + topCategory);
-}
+// Update dashboard
+export const statsUp = (count, sum, champ, sign) => {
+  showMsg("total-records", "Records: " + count);
+  showMsg("total-amount", "Amount: " + cashify(sum, sign));
+  showMsg("top-category", "Top Cat: " + champ);
+};
 
-// Announce settings changes
-export function announceSettings(country, symbol) {
-  showMessage("settings-msg", "Settings saved: " + country + " (" + symbol + ")");
-}
+// Announce settings
+export const shoutSettings = (place, sign) => {
+  showMsg("settings-msg", "Saved: " + place + " (" + sign + ")");
+};

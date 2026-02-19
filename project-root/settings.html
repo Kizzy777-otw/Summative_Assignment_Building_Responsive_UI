@@ -2,60 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - Student Finance Tracker</title>
+  <title>Settings - Finance Tracker</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <!-- Video background -->
   <video autoplay muted loop class="video-bg">
     <source src="media/background2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    Your browser does not support video.
   </video>
 
-  <!-- Content wrapper with blur -->
   <div class="content-wrapper">
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link">Skip</a>
 
-    <!-- Header -->
     <header>
-      <h1>Student Finance Tracker</h1>
+      <h1>Finance Tracker</h1>
       <nav>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="records.html">Records</a></li>
-          <li><a href="form.html">Add Record</a></li>
-          <li><a href="settings.html">Settings</a></li>
-        </ul>
+        <a href="about.html">About</a>
+        <a href="index.html">Dashboard</a>
+        <a href="records.html">Records</a>
+        <a href="form.html">Add</a>
+        <a href="settings.html">Settings</a>
       </nav>
     </header>
 
-    <!-- Main content -->
     <main id="main">
-      <section>
-        <h2>Settings</h2>
-        <form id="settings-form">
-          <label>Country/Region
-            <select id="country">
-              <option value="USA" data-rate="1" data-symbol="$">USA (USD)</option>
-              <option value="Rwanda" data-rate="1200" data-symbol="RWF">Rwanda (RWF)</option>
-              <option value="Europe" data-rate="0.9" data-symbol="€">Europe (EUR)</option>
-            </select>
-          </label>
-          <button type="submit">Save</button>
-        </form>
-        <div id="settings-msg" role="status" aria-live="polite"></div>
-      </section>
+      <h2>Settings</h2>
+      <form id="settings-form">
+        <select id="country">
+          <option value="USA" data-rate="1" data-symbol="$">USA (USD)</option>
+          <option value="Rwanda" data-rate="1200" data-symbol="RWF">Rwanda (RWF)</option>
+          <option value="Europe" data-rate="0.9" data-symbol="€">Europe (EUR)</option>
+        </select>
+        <button>Save</button>
+      </form>
+      <div id="settings-msg" aria-live="polite"></div>
     </main>
 
-    <!-- Footer -->
     <footer>
-      <p>&copy; 2026 Student Finance Tracker</p>
+      <p>&copy; 2026 Finance Tracker</p>
     </footer>
   </div>
 
-  <!-- Scripts -->
   <script type="module" src="scripts/settings.js"></script>
 </body>
 </html>

@@ -1,34 +1,33 @@
 import { getRecords, deleteRecord } from "./state.js";
-import { formatAmount } from "./ui.js";
+import { cashify } from "./ui.js";
 
-document.addEventListener("DOMContentLoaded", function() {
-  const settings = JSON.parse(localStorage.getItem("finance:settings") || "{}");
-  const rate = settings.rate || 1;
-  const symbol = settings.symbol || "$";
+document.addEventListener("DOMContentLoaded", () => {
+  const set = JSON.parse(localStorage.getItem("finance:settings") || "{}");
+  const rate = set.rate || 1;
+  const sign = set.sign || "$";
 
-  const tableBody = document.querySelector("#records-table tbody");
+  const body = document.querySelector("#records-table tbody");
 
-  function showRecords(list) {
-    tableBody.innerHTML = "";
-    for (let i = 0; i < list.length; i++) {
-      const r = list[i];
-      const converted = r.amount * rate;
+  const paint = list => {
+    body.innerHTML = "";
+    list.forEach(r => {
       const row = document.createElement("tr");
-      row.innerHTML = "<td>" + r.description + "</td>" +
-                      "<td>" + formatAmount(converted, symbol) + "</td>" +
-                      "<td>" + r.category + "</td>" +
-                      "<td>" + r.date + "</td>" +
-                      "<td><button data-id='" + r.id + "'>Delete</button></td>";
-      tableBody.appendChild(row);
-    }
-  }
+      row.innerHTML = `
+        <td>${r.description}</td>
+        <td>${cashify(r.amount * rate, sign)}</td>
+        <td>${r.category}</td>
+        <td>${r.date}</td>
+        <td><button data-id="${r.id}">Delete</button></td>`;
+      body.appendChild(row);
+    });
+  };
 
-  showRecords(getRecords());
+  paint(getRecords());
 
-  tableBody.addEventListener("click", function(e) {
+  body.onclick = e => {
     if (e.target.tagName === "BUTTON") {
       deleteRecord(e.target.dataset.id);
-      showRecords(getRecords());
+      paint(getRecords());
     }
-  });
+  };
 });

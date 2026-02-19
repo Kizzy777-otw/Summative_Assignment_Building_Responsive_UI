@@ -2,58 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><!-- Page-specific title here --> - Student Finance Tracker</title>
+  <title>Add - Finance Tracker</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <!-- Video background -->
   <video autoplay muted loop class="video-bg">
     <source src="media/background2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    Your browser doesn’t support video.
   </video>
 
-  <!-- Content wrapper with blur -->
   <div class="content-wrapper">
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link">Skip</a>
 
-    <!-- Header -->
     <header>
-      <h1>Student Finance Tracker</h1>
+      <h1>Finance Tracker</h1>
       <nav>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="records.html">Records</a></li>
-          <li><a href="form.html">Add Record</a></li>
-          <li><a href="settings.html">Settings</a></li>
-        </ul>
+        <a href="about.html">About</a>
+        <a href="index.html">Dashboard</a>
+        <a href="records.html">Records</a>
+        <a href="form.html">Add</a>
+        <a href="settings.html">Settings</a>
       </nav>
     </header>
 
-   <title>Add Record - Student Finance Tracker</title>
-<main id="main">
-  <section>
-    <h2>Add Record</h2>
-    <form id="record-form">
-      <label>Description <input type="text" id="desc"></label>
-      <label>Amount <input type="number" step="0.01" id="amount"></label>
-      <label>Category <input type="text" id="category"></label>
-      <label>Date <input type="date" id="date"></label>
-      <button type="submit">Add</button>
-    </form>
-    <div id="form-errors" role="status" aria-live="polite"></div>
-  </section>
-</main>
-<script type="module" src="scripts/form.js"></script>
+    <main id="main">
+      <h2>Add Record</h2>
+      <form id="record-form">
+        <input id="desc" placeholder="Description">
+        <input id="amount" type="number" step="0.01" placeholder="Amount">
+        <input id="category" placeholder="Category">
+        <input id="date" type="date">
+        <button>Add</button>
+      </form>
+      <div id="form-errors" aria-live="polite"></div>
+    </main>
 
-    <!-- Footer -->
     <footer>
-      <p>&copy; 2026 Student Finance Tracker</p>
+      <p>&copy; 2026 Finance Tracker</p>
     </footer>
   </div>
 
-  <!-- Scripts -->
   <script type="module" src="scripts/form.js"></script>
 </body>
 </html>

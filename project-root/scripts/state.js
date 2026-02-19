@@ -1,30 +1,19 @@
 import { load, save } from "./storage.js";
 
-// Keep records in memory
-let records = load();
+// In‑memory stash
+let stash = load();
 
-/**
- * Generate a unique ID for each record
- */
-function generateId() {
-  return "rec_" + Date.now();
-}
+// Make an ID
+const makeId = () => "rec_" + Date.now();
 
-/**
- * Get all records
- */
-export function getRecords() {
-  return records;
-}
+// Get all
+export const getRecords = () => stash;
 
-/**
- * Add a new record
- * @param {Object} data - { description, amount, category, date }
- */
-export function addRecord(data) {
+// Add one
+export const addRecord = data => {
   const now = new Date().toISOString();
-  const record = {
-    id: generateId(),
+  const newbie = {
+    id: makeId(),
     description: data.description,
     amount: parseFloat(data.amount),
     category: data.category,
@@ -32,31 +21,23 @@ export function addRecord(data) {
     createdAt: now,
     updatedAt: now,
   };
-  records.push(record);
-  save(records);
-  return record;
-}
+  stash.push(newbie);
+  save(stash);
+  return newbie;
+};
 
-/**
- * Edit an existing record
- * @param {string} id - record id
- * @param {Object} updates - fields to update
- */
-export function editRecord(id, updates) {
-  const record = records.find(r => r.id === id);
-  if (!record) return null;
+// Edit one
+export const editRecord = (id, tweaks) => {
+  const found = stash.find(x => x.id === id);
+  if (!found) return null;
+  Object.assign(found, tweaks);
+  found.updatedAt = new Date().toISOString();
+  save(stash);
+  return found;
+};
 
-  Object.assign(record, updates);
-  record.updatedAt = new Date().toISOString();
-  save(records);
-  return record;
-}
-
-/**
- * Delete a record
- * @param {string} id - record id
- */
-export function deleteRecord(id) {
-  records = records.filter(r => r.id !== id);
-  save(records);
-}
+// Delete one
+export const deleteRecord = id => {
+  stash = stash.filter(x => x.id !== id);
+  save(stash);
+};

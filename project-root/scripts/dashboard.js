@@ -1,23 +1,23 @@
 import { getRecords } from "./state.js";
-import { showMessage, formatAmount } from "./ui.js";
+import { showMsg, cashify } from "./ui.js";
 
-document.addEventListener("DOMContentLoaded", function() {
-  const settings = JSON.parse(localStorage.getItem("finance:settings") || "{}");
-  const rate = settings.rate || 1;
-  const symbol = settings.symbol || "$";
+document.addEventListener("DOMContentLoaded", () => {
+  const set = JSON.parse(localStorage.getItem("finance:settings") || "{}");
+  const rate = set.rate || 1;
+  const sign = set.sign || "$";
 
-  const records = getRecords();
-  let total = 0;
-  let categories = {};
+  const stash = getRecords();
+  let sum = 0;
+  let bins = {};
 
-  for (let i = 0; i < records.length; i++) {
-    total += records[i].amount * rate;
-    categories[records[i].category] = (categories[records[i].category] || 0) + 1;
-  }
+  stash.forEach(r => {
+    sum += r.amount * rate;
+    bins[r.category] = (bins[r.category] || 0) + 1;
+  });
 
-  const topCategory = Object.keys(categories)[0] || "N/A";
+  const champ = Object.keys(bins)[0] || "N/A";
 
-  showMessage("total-records", "Total Records: " + records.length);
-  showMessage("total-amount", "Total Amount: " + formatAmount(total, symbol));
-  showMessage("top-category", "Top Category: " + topCategory);
+  showMsg("total-records", "Records: " + stash.length);
+  showMsg("total-amount", "Amount: " + cashify(sum, sign));
+  showMsg("top-category", "Top Cat: " + champ);
 });

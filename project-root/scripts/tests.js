@@ -1,21 +1,20 @@
 // Regex check
 validateBtn.onclick = () => {
-  let d = descTest.value, a = amountTest.value;
+  let word = descTest.value, cash = amountTest.value;
   validationResult.textContent =
-    (/^[A-Za-z\s]+$/.test(d) ? "✓ Desc " : "✗ Desc ") +
-    (/^\d+(\.\d{1,2})?$/.test(a) ? "✓ Amt" : "✗ Amt");
+    (/^[A-Za-z\s]+$/.test(word) ? "✓ Desc " : "✗ Desc ") +
+    (/^\d+(\.\d{1,2})?$/.test(cash) ? "✓ Amt" : "✗ Amt");
 };
 
-// Export records
-exportBtn.onclick = () => {
-  exportOutput.textContent = localStorage.getItem("finance:data") || "No records";
-};
+// Show records
+exportBtn.onclick = () =>
+  exportOutput.textContent = localStorage.getItem("finance:data") || "Nada";
 
 // Clear records
 clearBtn.onclick = () => {
   localStorage.removeItem("finance:data");
-  exportOutput.textContent = "Cleared";
+  exportOutput.textContent = "Poof!";
 };
 
 // ARIA demo
-ariaBtn.onclick = () => ariaTest.textContent = "ARIA message!";
+ariaBtn.onclick = () => ariaTest.textContent = "Hey, I’m talking!";

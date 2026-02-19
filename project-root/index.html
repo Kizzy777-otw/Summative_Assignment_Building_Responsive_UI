@@ -2,49 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Student Finance Tracker</title>
+  <title>Dashboard - Finance Tracker</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <!-- Video background -->
   <video autoplay muted loop class="video-bg">
     <source src="media/background2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+    Your browser doesn’t support video.
   </video>
 
-  <!-- Content wrapper with blur -->
   <div class="content-wrapper">
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link">Skip</a>
 
     <header>
-      <h1>Student Finance Tracker</h1>
+      <h1>Finance Tracker</h1>
       <nav>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="records.html">Records</a></li>
-          <li><a href="form.html">Add Record</a></li>
-          <li><a href="settings.html">Settings</a></li>
-        </ul>
+        <a href="about.html">About</a>
+        <a href="index.html">Dashboard</a>
+        <a href="records.html">Records</a>
+        <a href="form.html">Add</a>
+        <a href="settings.html">Settings</a>
       </nav>
     </header>
 
     <main id="main">
-      <section>
-        <h2>Dashboard</h2>
-        <p id="total-records">Total Records: 0</p>
-        <p id="total-amount">Total Amount: $0.00</p>
-        <p id="top-category">Top Category: N/A</p>
-      </section>
+      <h2>Dashboard</h2>
+      <p id="total-records">Records: 0</p>
+      <p id="total-amount">Amount: $0.00</p>
+      <p id="top-category">Top Cat: N/A</p>
     </main>
 
     <footer>
-      <p>&copy; 2026 Student Finance Tracker</p>
+      <p>&copy; 2026 Finance Tracker</p>
     </footer>
   </div>
 
-  <!-- Scripts -->
   <script type="module" src="scripts/dashboard.js"></script>
 </body>
 </html>

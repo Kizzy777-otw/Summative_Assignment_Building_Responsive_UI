@@ -1,35 +1,25 @@
-// Key name for localStorage
-const KEY = "finance:data";
+// LocalStorage key
+const treasure = "finance:data";
 
-/**
- * Load records from localStorage
- * @returns {Array} records array
- */
-export function load() {
+// Load records
+export const load = () => {
   try {
-    const raw = localStorage.getItem(KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch (err) {
-    console.error("Error loading data:", err);
+    const loot = localStorage.getItem(treasure);
+    return loot ? JSON.parse(loot) : [];
+  } catch (oops) {
+    console.error("Load fail:", oops);
     return [];
   }
-}
+};
 
-/**
- * Save records to localStorage
- * @param {Array} data - records array
- */
-export function save(data) {
+// Save records
+export const save = stuff => {
   try {
-    localStorage.setItem(KEY, JSON.stringify(data));
-  } catch (err) {
-    console.error("We had an error saving your data:", err);
+    localStorage.setItem(treasure, JSON.stringify(stuff));
+  } catch (oops) {
+    console.error("Save fail:", oops);
   }
-}
+};
 
-/**
- * Clear all records (optional helper)
- */
-export function clear() {
-  localStorage.removeItem(KEY);
-}
+// Clear records
+export const clear = () => localStorage.removeItem(treasure);
