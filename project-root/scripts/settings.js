@@ -1,30 +1,21 @@
-import { getRecords } from "./state.js";
-import { announceSettings, showMessage } from "./ui.js";
+import { announceSettings } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("settings-form");
-  const baseCurrencySelect = document.getElementById("base-currency");
-  const conversionRateInput = document.getElementById("conversion-rate");
+  const countrySelect = document.getElementById("country");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const baseCurrency = baseCurrencySelect.value;
-    const conversionRate = conversionRateInput.value || 1;
+    const option = countrySelect.options[countrySelect.selectedIndex];
+    const country = option.value;
+    const rate = parseFloat(option.dataset.rate);
 
     localStorage.setItem("finance:settings", JSON.stringify({
-      baseCurrency: baseCurrency,
-      conversionRate: conversionRate
+      country: country,
+      rate: rate
     }));
 
-    announceSettings(baseCurrency, conversionRate);
-
-    // Simple cap check (demo: 100)
-    const CAP = 100;
-    const totalAmount = getRecords().reduce(function(sum, r) { return sum + r.amount; }, 0);
-
-    if (totalAmount > CAP) {
-      showMessage("settings-msg", "Alert: Cap exceeded! Current total is " + totalAmount);
-    }
+    announceSettings(country, rate);
   });
 });
