@@ -1,20 +1,23 @@
 import { getRecords } from "./state.js";
-import { updateStats } from "./ui.js";
+import { showMessage, formatAmount } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", function() {
+  const settings = JSON.parse(localStorage.getItem("finance:settings") || "{}");
+  const rate = settings.rate || 1;
+  const country = settings.country || "USA";
+
   const records = getRecords();
+  let total = 0;
+  let categories = {};
 
-  const totalRecords = records.length;
-  const totalAmount = records.reduce(function(sum, r) { return sum + r.amount; }, 0);
-
-  const categories = {};
   for (let i = 0; i < records.length; i++) {
-    const r = records[i];
-    categories[r.category] = (categories[r.category] || 0) + 1;
+    total += records[i].amount * rate;
+    categories[records[i].category] = (categories[records[i].category] || 0) + 1;
   }
-  const topCategory = Object.keys(categories).sort(function(a, b) {
-    return categories[b] - categories[a];
-  })[0] || "N/A";
 
-  updateStats({ totalRecords: totalRecords, totalAmount: totalAmount, topCategory: topCategory });
+  const topCategory = Object.keys(categories)[0] || "N/A";
+
+  showMessage("total-records", "Total Records: " + records.length);
+  showMessage("total-amount", "Total Amount: " + formatAmount(total, country));
+  showMessage("top-category", "Top Category: " + topCategory);
 });
