@@ -4,7 +4,7 @@ import { showMessage, formatAmount } from "./ui.js";
 document.addEventListener("DOMContentLoaded", function() {
   const settings = JSON.parse(localStorage.getItem("finance:settings") || "{}");
   const rate = settings.rate || 1;
-  const country = settings.country || "USA";
+  const symbol = settings.symbol || "$";
 
   const records = getRecords();
   let total = 0;
@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const topCategory = Object.keys(categories)[0] || "N/A";
 
   showMessage("total-records", "Total Records: " + records.length);
-  showMessage("total-amount", "Total Amount: " + formatAmount(total, country));
+  showMessage("total-amount", "Total Amount: " + formatAmount(total, symbol));
   showMessage("top-category", "Top Category: " + topCategory);
 });

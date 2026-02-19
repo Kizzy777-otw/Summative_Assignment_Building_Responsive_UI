@@ -1,4 +1,4 @@
-import { announceSettings } from "./ui.js";
+import { showMessage } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("settings-form");
@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const option = countrySelect.options[countrySelect.selectedIndex];
     const country = option.value;
-    const rate = parseFloat(option.dataset.rate);
+    const rate = parseFloat(option.dataset.rate) || 1;
+    const symbol = option.dataset.symbol || "$";
 
     localStorage.setItem("finance:settings", JSON.stringify({
       country: country,
-      rate: rate
+      rate: rate,
+      symbol: symbol
     }));
 
-    announceSettings(country, rate);
+    showMessage("settings-msg", "Settings saved: " + country + " (" + symbol + ")");
   });
 });

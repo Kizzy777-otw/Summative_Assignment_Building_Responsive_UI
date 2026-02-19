@@ -1,22 +1,18 @@
 // Show a message in a target element
-export function showMessage(targetId, text) {
-  const el = document.getElementById(targetId);
-  if (el) {
-    el.textContent = text;
-  }
+export function showMessage(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
 }
 
 // Clear content of an element
-export function clearContent(targetId) {
-  const el = document.getElementById(targetId);
-  if (el) {
-    el.textContent = "";
-  }
+export function clearContent(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = "";
 }
 
-// Format amount with 2 decimals
-export function formatAmount(num) {
-  return "$" + Number(num).toFixed(2);
+// Format amount with currency symbol
+export function formatAmount(num, symbol) {
+  return symbol + num.toFixed(2);
 }
 
 // Format date (YYYY-MM-DD → DD/MM/YYYY)
@@ -25,14 +21,14 @@ export function formatDate(dateStr) {
   return parts[2] + "/" + parts[1] + "/" + parts[0];
 }
 
-// Update multiple stats in one go
-export function updateStats(stats) {
-  showMessage("total-records", "Total Records: " + stats.totalRecords);
-  showMessage("total-amount", "Total Amount: " + formatAmount(stats.totalAmount));
-  showMessage("top-category", "Top Category: " + stats.topCategory);
+// Update dashboard stats
+export function updateStats(totalRecords, totalAmount, topCategory, symbol) {
+  showMessage("total-records", "Total Records: " + totalRecords);
+  showMessage("total-amount", "Total Amount: " + formatAmount(totalAmount, symbol));
+  showMessage("top-category", "Top Category: " + topCategory);
 }
 
 // Announce settings changes
-export function announceSettings(baseCurrency, conversionRate) {
-  showMessage("settings-msg", "Settings saved: " + baseCurrency + " (rate " + conversionRate + ")");
+export function announceSettings(country, symbol) {
+  showMessage("settings-msg", "Settings saved: " + country + " (" + symbol + ")");
 }
