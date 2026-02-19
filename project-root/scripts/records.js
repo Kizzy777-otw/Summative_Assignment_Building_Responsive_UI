@@ -1,78 +1,35 @@
-import { getRecords, deleteRecord, editRecord } from "./state.js";
-import { compileRegex, highlight } from "./search.js";
+import { getRecords, deleteRecord } from "./state.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
   const tableBody = document.querySelector("#records-table tbody");
   const searchInput = document.getElementById("search");
 
-  // Render all records
-  function render(records) {
+  function showRecords(list) {
     tableBody.innerHTML = "";
-    records.forEach(record => {
+    for (let i = 0; i < list.length; i++) {
+      const r = list[i];
       const row = document.createElement("tr");
-
-      row.innerHTML = `
-        <td>${record.description}</td>
-        <td>${record.amount.toFixed(2)}</td>
-        <td>${record.category}</td>
-        <td>${record.date}</td>
-        <td>
-          <button class="edit" data-id="${record.id}">Edit</button>
-          <button class="delete" data-id="${record.id}">Delete</button>
-        </td>
-      `;
-
+      row.innerHTML = "<td>" + r.description + "</td>" +
+                      "<td>" + r.amount + "</td>" +
+                      "<td>" + r.category + "</td>" +
+                      "<td>" + r.date + "</td>" +
+                      "<td><button data-id='" + r.id + "'>Delete</button></td>";
       tableBody.appendChild(row);
-    });
+    }
   }
 
-  // Initial render
-  render(getRecords());
+  showRecords(getRecords());
 
-  // Search with regex
-  searchInput.addEventListener("input", () => {
-    const pattern = searchInput.value;
-    const re = compileRegex(pattern, "i");
-    const records = getRecords();
-
-    tableBody.innerHTML = "";
-    records.forEach(record => {
-      let desc = record.description;
-      if (re) desc = highlight(desc, re);
-
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${desc}</td>
-        <td>${record.amount.toFixed(2)}</td>
-        <td>${record.category}</td>
-        <td>${record.date}</td>
-        <td>
-          <button class="edit" data-id="${record.id}">Edit</button>
-          <button class="delete" data-id="${record.id}">Delete</button>
-        </td>
-      `;
-      tableBody.appendChild(row);
-    });
+  searchInput.addEventListener("input", function() {
+    const term = searchInput.value.toLowerCase();
+    const filtered = getRecords().filter(r => r.description.toLowerCase().includes(term));
+    showRecords(filtered);
   });
 
-  // Handle delete
-  tableBody.addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete")) {
-      const id = e.target.dataset.id;
-      deleteRecord(id);
-      render(getRecords());
-    }
-  });
-
-  // Handle edit (simple inline prompt for now)
-  tableBody.addEventListener("click", (e) => {
-    if (e.target.classList.contains("edit")) {
-      const id = e.target.dataset.id;
-      const newDesc = prompt("Enter new description:");
-      if (newDesc) {
-        editRecord(id, { description: newDesc });
-        render(getRecords());
-      }
+  tableBody.addEventListener("click", function(e) {
+    if (e.target.tagName === "BUTTON") {
+      deleteRecord(e.target.dataset.id);
+      showRecords(getRecords());
     }
   });
 });
