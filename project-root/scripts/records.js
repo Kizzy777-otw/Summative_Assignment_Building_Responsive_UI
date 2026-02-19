@@ -4,7 +4,7 @@ import { formatAmount } from "./ui.js";
 document.addEventListener("DOMContentLoaded", function() {
   const settings = JSON.parse(localStorage.getItem("finance:settings") || "{}");
   const rate = settings.rate || 1;
-  const country = settings.country || "USA";
+  const symbol = settings.symbol || "$";
 
   const tableBody = document.querySelector("#records-table tbody");
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const converted = r.amount * rate;
       const row = document.createElement("tr");
       row.innerHTML = "<td>" + r.description + "</td>" +
-                      "<td>" + formatAmount(converted, country) + "</td>" +
+                      "<td>" + formatAmount(converted, symbol) + "</td>" +
                       "<td>" + r.category + "</td>" +
                       "<td>" + r.date + "</td>" +
                       "<td><button data-id='" + r.id + "'>Delete</button></td>";
