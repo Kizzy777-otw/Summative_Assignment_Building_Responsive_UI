@@ -1,0 +1,1 @@
+The media in this section weren't able to be uploaded on Github upon their limitations, they were ignored and placed under a .gitignore file.
