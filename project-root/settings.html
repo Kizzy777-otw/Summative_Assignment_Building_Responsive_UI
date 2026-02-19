@@ -25,18 +25,17 @@
     <section>
       <h2>Settings</h2>
       <form id="settings-form">
-        <label>Base Currency
-          <select id="base-currency">
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="RWF">RWF</option>
-          </select>
-        </label>
-        <label>Conversion Rate (to secondary currency)
-          <input type="number" step="0.01" id="conversion-rate">
-        </label>
-        <button type="submit">Save Settings</button>
-      </form>
+  <label>Country/Region
+    <select id="country">
+      <option value="USA" data-rate="1">USA (USD)</option>
+      <option value="Rwanda" data-rate="1200">Rwanda (RWF)</option>
+      <option value="Europe" data-rate="0.9">Europe (EUR)</option>
+    </select>
+  </label>
+  <button type="submit">Save</button>
+</form>
+<div id="settings-msg" role="status" aria-live="polite"></div>
+
     </section>
   </main>
 
