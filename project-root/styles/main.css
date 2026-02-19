@@ -7,7 +7,9 @@
 
 body, html {
   height: 100%;
-  font-family: 'Inter', sans-serif;
+
+  font-family: "Courier New", Courier, monospace;
+
   color: #f5f5f5; /* off‑white for readability */
   line-height: 1.6;
 
@@ -80,18 +82,31 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f5f5f5; /* light text for readability */
+  border-radius: 8px;
+  overflow: hidden;
+
 }
 th, td {
-  border: 1px solid #ddd;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
 }
 th {
-  background: #eee;
+  background: rgba(255, 255, 255, 0.05); /* slightly stronger blur for header */
+  color: #ffedb0; /* warm highlight for headings */
+
 }
+tr:hover {
+  background: oklab(59.619% 0.01287 0.004 / 0.2); /* highlight row on hover */
+}
+
 tr:nth-child(even) {
-  background: #f2f2f2;
+  background:oklab(94.697% 0.00516 0.00149 / 0.2);
 }
 
 /* Form */

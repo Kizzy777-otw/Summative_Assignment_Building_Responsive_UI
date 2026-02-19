@@ -1,0 +1,71 @@
+[
+  {
+    "description": "Books",
+    "amount": 120,
+    "category": "Education",
+    "date": "2025-09-10"
+  },
+  {
+    "description": "Eats on a hangout",
+    "amount": 5.75,
+    "category": "Food",
+    "date": "2025-08-09"
+  },
+  {
+     "description": "Moto fare",
+    "amount": 11,
+     "category": "Transport",
+    "date": "2025-06-07"
+  },
+  {
+    "description": "new year clothes",
+     "amount": 9,
+    "category": "Clothing",
+    "date": "2025-01-01"
+  },
+  {
+    "description": "Concert",
+    "amount": 6.00,
+    "category": "Entertainment",
+    "date": "2026-12-25"
+  },
+  {
+    "description": "Groceries",
+    "amount":11.99,
+    "category": "Food",
+    "date": "2026-01-09"
+  },
+  {
+    "description": "Spotify subscription",
+    "amount": 5,
+    "category": "Education",
+    "date": "2026-02-07"
+  },
+  {
+   "description":"Lunch at cafeteria",
+   "amount":12.50,"category":"Food",
+   "date":"2025-09-25",
+   "createdAt":"...","updatedAt":"..."
+},
+   {
+    
+    "description":"Chemistry textbook",
+   "amount":89.99,"category":"Books","date":"2025-09-23",
+   "createdAt":"...","updatedAt":"..."
+},
+    {
+       
+        "description":"Boarding pass","amount":45.00,
+    "category":"Transport",
+    "date":"2025-09-20"
+  
+},
+     {
+        
+        "description":"Coffee with friends",
+     "amount":8.75,
+     "category":"Entertainment",
+     "date":"2025-09-28"
+     
+    }
+]
