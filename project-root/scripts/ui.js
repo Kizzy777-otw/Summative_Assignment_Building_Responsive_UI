@@ -24,3 +24,15 @@ export function formatDate(dateStr) {
   const parts = dateStr.split("-");
   return parts[2] + "/" + parts[1] + "/" + parts[0];
 }
+
+// Update multiple stats in one go
+export function updateStats(stats) {
+  showMessage("total-records", "Total Records: " + stats.totalRecords);
+  showMessage("total-amount", "Total Amount: " + formatAmount(stats.totalAmount));
+  showMessage("top-category", "Top Category: " + stats.topCategory);
+}
+
+// Announce settings changes
+export function announceSettings(baseCurrency, conversionRate) {
+  showMessage("settings-msg", "Settings saved: " + baseCurrency + " (rate " + conversionRate + ")");
+}
