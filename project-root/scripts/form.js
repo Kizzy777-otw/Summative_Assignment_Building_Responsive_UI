@@ -1,24 +1,24 @@
 import { addRecord } from "./state.js";
 import { showMsg } from "./ui.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("record-form");
 
-  form.onsubmit = e => {
+   form.onsubmit = e => {
     e.preventDefault();
 
-    const desc = document.getElementById("desc").value.trim();
+      const desc = document.getElementById("desc").value.trim();
     const cash = document.getElementById("amount").value.trim();
-    const tag = document.getElementById("category").value.trim();
-    const day = document.getElementById("date").value.trim();
+     const tag = document.getElementById("category").value.trim();
+      const day = document.getElementById("date").value.trim();
 
     if (!desc || !cash || !tag || !day) {
-      showMsg("form-errors", "Fill all the blanks!");
+        showMsg("form-errors", "Fill all the blanks!");
       return;
     }
 
-    addRecord({ description: desc, amount: cash, category: tag, date: day });
+     addRecord({ description: desc, amount: cash, category: tag, date: day });
     form.reset();
-    showMsg("form-errors", "Boom! Record added.");
+      showMsg("form-errors", "Boom! Record added.");
   };
 });

@@ -1,43 +1,43 @@
 import { load, save } from "./storage.js";
 
-// In‑memory stash
+// In-memory stash of records
 let stash = load();
 
-// Make an ID
-const makeId = () => "rec_" + Date.now();
+// Making the ID
+ const makeId = () => "rec_" + Date.now();
 
-// Get all
+// Getting all records
 export const getRecords = () => stash;
 
-// Add one
+// Adding the new record
 export const addRecord = data => {
-  const now = new Date().toISOString();
+   const now = new Date().toISOString();
   const newbie = {
     id: makeId(),
     description: data.description,
-    amount: parseFloat(data.amount),
+     amount: parseFloat(data.amount),
     category: data.category,
-    date: data.date,
-    createdAt: now,
+     date: data.date,
+     createdAt: now,
     updatedAt: now,
   };
   stash.push(newbie);
-  save(stash);
+   save(stash);
   return newbie;
 };
 
-// Edit one
+// Editing the record
 export const editRecord = (id, tweaks) => {
-  const found = stash.find(x => x.id === id);
-  if (!found) return null;
+   const found = stash.find(x => x.id === id);
+   if (!found) return null;
   Object.assign(found, tweaks);
-  found.updatedAt = new Date().toISOString();
-  save(stash);
+   found.updatedAt = new Date().toISOString();
+   save(stash);
   return found;
 };
 
-// Delete one
+// Deleting the record
 export const deleteRecord = id => {
   stash = stash.filter(x => x.id !== id);
-  save(stash);
+   save(stash);
 };

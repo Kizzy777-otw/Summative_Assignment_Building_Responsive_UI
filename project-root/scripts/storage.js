@@ -1,7 +1,7 @@
-// LocalStorage key
+// the local storage key for the records
 const treasure = "finance:data";
 
-// Load records
+// loading records
 export const load = () => {
   try {
     const loot = localStorage.getItem(treasure);
@@ -12,7 +12,7 @@ export const load = () => {
   }
 };
 
-// Save records
+// Saving records
 export const save = stuff => {
   try {
     localStorage.setItem(treasure, JSON.stringify(stuff));
@@ -21,5 +21,5 @@ export const save = stuff => {
   }
 };
 
-// Clear records
+// Clearing records
 export const clear = () => localStorage.removeItem(treasure);

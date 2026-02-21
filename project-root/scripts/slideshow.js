@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   let current = 0;
 
   function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active");
+     slides.forEach((slide, i) => {
+       slide.classList.remove("active");
       if (i === index) {
         slide.classList.add("active");
       }
@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function nextSlide() {
     current = (current + 1) % slides.length;
-    showSlide(current);
+     showSlide(current);
   }
 
-  // Show first slide
+  // display first slide
   showSlide(current);
 
-  // Change every 3 seconds
+  // switching every 3 seconds
   setInterval(nextSlide, 3000);
 });
